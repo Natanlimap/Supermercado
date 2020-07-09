@@ -3,20 +3,20 @@
 
 #include <iostream>
 #include <vector>
-
+#include <estabelecimento.h>
 class Cliente
 {
 public:
-	Cliente();
-	~Cliente();
-	
-	float saldo;
+	Cliente(Estabelecimento *lloja, double lsaldo);
+	Estabelecimento *loja;
+	double saldo;
 	std::vector<std::string> sacola;
 
-	void compra();
+	void compra(std::string nome, double preco);
 	void verSacola();
 	void registro();
-	
+
+	static int clienteQuant;
 };
 
 

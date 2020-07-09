@@ -2,4 +2,4 @@
 
 
 all:
-	g++ -std=c++11 ./src/main.cpp ./src/estabelecimento.cpp ./src/produto.cpp -I include -o supermercado
+	g++ -std=c++14 ./src/main.cpp ./src/estabelecimento.cpp ./src/produto.cpp ./src/cliente.cpp -I include -o supermercado

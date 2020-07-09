@@ -2,13 +2,14 @@
 
 Estabelecimento::Estabelecimento()
 {
-
+	
 	lerItens();
 
 }
 
 
-void Estabelecimento::lerItens(){
+void Estabelecimento::lerItens()
+{
 
 	std::ifstream file; //arquivo 
     std::string line; // linha a ser lida
@@ -20,12 +21,15 @@ void Estabelecimento::lerItens(){
   	std::stringstream stream;
   	char discard;
 
-    if(!(file.is_open())){
+    if(!(file.is_open()))
+    {
         return;
     }
 	getline(file, line);
-    while(getline(file, line)){
-    	do{
+    while(getline(file, line))
+    {
+    	do
+    	{
     		found = line.find_first_of(",");
 
     		switch(count){
@@ -81,16 +85,73 @@ void Estabelecimento::lerItens(){
 
 }
 
-void Estabelecimento::listar(){
-	for (int i = 0; i < produtos.size(); ++i)
-	{
-		if(produtos[i].quantidade > 0){
-			std::cout << "["<<produtos[i].codigo << "] " << produtos[i].nome << std::endl;;
-			std::cout << "R$ "  << std::setprecision(10) << produtos[i].preco << std::endl;
-			std::cout << produtos[i].quantidade << " em estoque" << std::endl;
-			std::cout << "\n";
+void Estabelecimento::listar()
+{
 
+	for(auto e: produtos){
+		if(e.quantidade > 0)
+		{
+			std::cout << "["<<e.codigo << "] " << e.nome << std::endl;;
+			std::cout << "R$ "  << std::setprecision(10) << e.preco << std::endl;
+			std::cout << e.quantidade << " em estoque" << std::endl;
+			std::cout << "\n";
+		}
+
+	}
+
+}
+
+
+bool Estabelecimento::venda(std::string codigo)
+{
+
+	for(auto &e: produtos){
+		// std::cout << codigo <<"==" << e.codigo << std::endl;
+		if(codigo == e.codigo && e.quantidade > 0)
+		{
+			e.quantidade--; 
+			// salvarCaixa(e);
+			std::cout << "Venda efetuada" << std::endl;
+			return true;
 		}
 	}
+    std::cout << "Produto nao encontrado ou estoque esgotado" << std::endl;
+
+    return false;
+
+
+}
+
+bool Estabelecimento::venda(std::string nome, double preco){
+    if(venda(converteParaCodigo(nome, preco))){
+        return true;
+    }
+    return false;
+}
+
+std::string Estabelecimento::converteParaCodigo(std::string nome, double preco){
+    for(auto e: produtos){
+        if(nome == e.nome && preco == e.preco){
+            return e.codigo;
+        }
+    }
+}
+
+
+void Estabelecimento::salvarCaixa(auto produtoVendido){
+
+}
+
+void Estabelecimento::escreverArquivo(std::string filename, std::list<Produto> lista){
+	std::ofstream file; //arquivo 
+    std::string line; // linha a ser lida
+    file.open(filename); // nome do arquivo aberto
+    file << "COD,PRODUTO,UNIDADE DE MEDIDA,PREÇO,QUANTIDADE" << std::endl;
+
+    for(auto e: lista){
+    	file << e.codigo << e.nome  <<"Feijão,Pacote,`R$ 6.22`,10" << std::endl;
+    }
+    file.close();
+
 }
 

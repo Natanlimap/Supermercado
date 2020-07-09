@@ -4,6 +4,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <list>
+
 #include <produto.h>
 #include <fstream>
 #include <sstream>
@@ -12,22 +14,26 @@
 
 class Estabelecimento
 {
-public:
+
+	public:
 
 	Estabelecimento();
 
 	void listar();
-	void venda();
-	void caixa();
+	bool venda(std::string codigo);
+	bool venda(std::string nome, double preco);
+
+	void caixa(double valor);
 
 
-private:
+	private:
 
-	std::vector<Produto> produtos;
- 	
+	std::list<Produto> produtos;
+	std::string converteParaCodigo(std::string nome,double preco);
+
  	void lerItens();
- 	void salvarItens();
-
+ 	void salvarCaixa(auto produtoVendido);
+ 	void escreverArquivo(std::string filename, std::list<Produto> lista);
 };
 
 #endif
