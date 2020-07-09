@@ -11,8 +11,22 @@ Cliente::Cliente(Estabelecimento *lloja, double lsaldo){
 void Cliente::compra(std::string nome, double preco){
 	if(saldo > preco){
 		if(loja->venda(nome, preco)){
+			bool existe = false;
+
 			saldo -= preco;
-			sacola.push_back(nome);
+
+			Produto compra =  Produto(nome, preco);
+
+            for(auto &x: sacola){
+                if(x.nome == nome && x.preco == preco){
+                    existe = true;
+                    x.quantidade++;
+                }
+            }
+            if(!existe){
+                sacola.push_back(compra);
+            }
+
 		}
 	}else{
 		std::cout << "Saldo insuficiente" << std::endl;
@@ -21,6 +35,6 @@ void Cliente::compra(std::string nome, double preco){
 void Cliente::verSacola(){
 	
 	for(auto e: sacola){
-		std::cout << e <<std::endl;
+		std::cout << e.quantidade << " de " << e.nome << std::endl;
 	}
 }

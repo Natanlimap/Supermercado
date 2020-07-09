@@ -23,16 +23,18 @@ class Estabelecimento
 	bool venda(std::string codigo);
 	bool venda(std::string nome, double preco);
 
-	void caixa(double valor);
+	void caixa();
+	std::list<Produto> produtos;
 
 
 	private:
 
-	std::list<Produto> produtos;
+	std::list<Produto> vendas;
+
 	std::string converteParaCodigo(std::string nome,double preco);
 
  	void lerItens();
- 	void salvarCaixa(auto produtoVendido);
+ 	void salvarCaixa();
  	void escreverArquivo(std::string filename, std::list<Produto> lista);
 };
 

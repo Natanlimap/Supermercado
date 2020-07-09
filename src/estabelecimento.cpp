@@ -58,7 +58,7 @@ void Estabelecimento::lerItens()
     			case 3:
     			    found = line.find_first_of(",");
     				stream.clear();
-    				aux = line.substr(4, found-5);
+    				aux = line.substr(3, found-3);
     				stream << aux;
     				stream >> novoProduto.preco;
     				line = line.substr(found+1, std::string::npos);
@@ -87,12 +87,11 @@ void Estabelecimento::lerItens()
 
 void Estabelecimento::listar()
 {
-
 	for(auto e: produtos){
 		if(e.quantidade > 0)
 		{
 			std::cout << "["<<e.codigo << "] " << e.nome << std::endl;;
-			std::cout << "R$ "  << std::setprecision(10) << e.preco << std::endl;
+			std::cout << "R$ "  << std::fixed<< std::setprecision(2) << e.preco << std::endl;
 			std::cout << e.quantidade << " em estoque" << std::endl;
 			std::cout << "\n";
 		}
@@ -104,13 +103,30 @@ void Estabelecimento::listar()
 
 bool Estabelecimento::venda(std::string codigo)
 {
-
-	for(auto &e: produtos){
-		// std::cout << codigo <<"==" << e.codigo << std::endl;
-		if(codigo == e.codigo && e.quantidade > 0)
+    bool existe = false;
+	
+    for(auto &e: produtos){
+	
+    	if(codigo == e.codigo && e.quantidade > 0)
 		{
+            Produto produtoVendido = e;
+            produtoVendido.quantidade = 1;
 			e.quantidade--; 
-			// salvarCaixa(e);
+
+            existe = false;
+
+            for(auto &x: vendas){
+                if(x.codigo == codigo){
+                    existe = true;
+                    x.quantidade++;
+                }
+            }
+            if(!existe){
+                vendas.push_back(produtoVendido);
+            }
+
+            escreverArquivo("caixa.csv", vendas);
+            escreverArquivo("estoque.csv", produtos);
 			std::cout << "Venda efetuada" << std::endl;
 			return true;
 		}
@@ -138,9 +154,6 @@ std::string Estabelecimento::converteParaCodigo(std::string nome, double preco){
 }
 
 
-void Estabelecimento::salvarCaixa(auto produtoVendido){
-
-}
 
 void Estabelecimento::escreverArquivo(std::string filename, std::list<Produto> lista){
 	std::ofstream file; //arquivo 
@@ -149,8 +162,9 @@ void Estabelecimento::escreverArquivo(std::string filename, std::list<Produto> l
     file << "COD,PRODUTO,UNIDADE DE MEDIDA,PREÇO,QUANTIDADE" << std::endl;
 
     for(auto e: lista){
-    	file << e.codigo << e.nome  <<"Feijão,Pacote,`R$ 6.22`,10" << std::endl;
+    	file << e.codigo << ","<< e.nome  <<","<< e.unidadeMedida << ",R$ " <<e.preco << "," << e.quantidade << std::endl;
     }
+
     file.close();
 
 }

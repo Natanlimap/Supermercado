@@ -14,10 +14,14 @@ int main(int argc, char const *argv[])
 	
 		std::cout << "1 - compra, 2 - listar estoque, 3 - listar sacola, Finalizar compra " << std::endl;
 		std::cin >> action;
+	
 		if(action == 0){
 			std::cout << "Insira o saldo do novo cliente" << std::endl;
 			std::cin >> novoSaldo;
 			a =  Cliente(&teste, novoSaldo);
+			std::cout << "1 - compra, 2 - listar estoque, 3 - listar sacola, Finalizar compra " << std::endl;
+			std::cin >> action;
+
 		}
 		switch(action){
 			
@@ -29,10 +33,15 @@ int main(int argc, char const *argv[])
 				break;
 			case 2:
 				teste.listar();
+				break;
 			case 3:
 				a.verSacola();
-
+				break;
+			default:
+				std::cout << "Opcao incorrenta, tente novamente" << std::endl;
+				break;
 		}
+
 	}
 	return 0;
 }

@@ -9,6 +9,8 @@ class Produto{
 	public:
 	
 		Produto();
+		Produto(std::string rnome, double rpreco);
+
 		std::string nome;
 		std::string codigo;
 		double preco;

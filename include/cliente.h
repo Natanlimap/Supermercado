@@ -4,13 +4,14 @@
 #include <iostream>
 #include <vector>
 #include <estabelecimento.h>
+#include <produto.h>
 class Cliente
 {
 public:
 	Cliente(Estabelecimento *lloja, double lsaldo);
 	Estabelecimento *loja;
 	double saldo;
-	std::vector<std::string> sacola;
+	std::vector<Produto> sacola;
 
 	void compra(std::string nome, double preco);
 	void verSacola();

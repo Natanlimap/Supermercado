@@ -1,18 +1,18 @@
 COD,PRODUTO,UNIDADE DE MEDIDA,PREÇO,QUANTIDADE
-1,Feijão,Pacote,"R$ 6.22",10
-2,Arroz,Pacote,"R$ 3.13",23
-3,Fubá,Pacote,"R$ 2.12",50
-4,Milho Verde,Lata,"R$ 1.35",1000
-5,Ervilha,Lata,"R$ 1.36",10
-6,Farinha,Pacote,"R$ 2.82",5
-7,Tomate,Quilo,"R$ 2.25",8
-8,Laranja,Quilo,"R$ 3.51",4
-9,Limão,Quilo,"R$ 3.55",4
-10,Macaxeira,Quilo,"R$ 40000.52",10
-11,Pimentão,Quilo,"R$ 3.31",3
-12,Queijo,Quilo,"R$ 28.02",8
-13,Presunto,Quilo,"R$ 14.05",8
-14,Carne,Quilo,"R$ 24.92",5
-15,Salsicha,Quilo,"R$ 8.49",15
-16,Peixe,Quilo,"R$ 12.40",5
-17,Margarina,Lata,"R$ 2.99",10
+1,Feijão,Pacote,R$ 6.22,10
+2,Arroz,Pacote,R$ 3.13,23
+3,Fubá,Pacote,R$ 2.12,50
+4,Milho Verde,Lata,R$ 1.35,1000
+5,Ervilha,Lata,R$ 1.36,10
+6,Farinha,Pacote,R$ 2.82,5
+7,Tomate,Quilo,R$ 2.25,8
+8,Laranja,Quilo,R$ 3.51,4
+9,Limão,Quilo,R$ 3.55,4
+10,Macaxeira,Quilo,R$ 40000.5,10
+11,Pimentão,Quilo,R$ 3.31,3
+12,Queijo,Quilo,R$ 28.02,8
+13,Presunto,Quilo,R$ 14.05,8
+14,Carne,Quilo,R$ 24.92,5
+15,Salsicha,Quilo,R$ 8.49,14
+16,Peixe,Quilo,R$ 12.4,4
+17,Margarina,Lata,R$ 2.99,10
