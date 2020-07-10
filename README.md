@@ -1,7 +1,7 @@
 # Introdução #
 
 Este projeto implementa uma classe de um diario pessoal o qual foi proposto pelo professor da disciplina de Linguagem de Programacao 1, Samuel Oliveira da Universidade Federal do Rio Grande Do Norte
-O projeto utiliza algumas estrutura de dados comuns em c++, leitura e escrita de arquivos, configuracao do projeto definida pelo cliente e makefile para execucao do projeto.
+O projeto utiliza algumas estrutura de dados comuns em c++, leitura e escrita de arquivos e makefile para execucao do projeto.
 
 
 # Funcoes #
