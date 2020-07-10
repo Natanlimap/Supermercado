@@ -5,6 +5,8 @@
 #include <vector>
 #include <estabelecimento.h>
 #include <produto.h>
+#include <fstream>
+
 class Cliente
 {
 public:

@@ -26,7 +26,7 @@ void Cliente::compra(std::string nome, double preco){
             if(!existe){
                 sacola.push_back(compra);
             }
-
+            registro();
 		}
 	}else{
 		std::cout << "Saldo insuficiente" << std::endl;
@@ -37,4 +37,18 @@ void Cliente::verSacola(){
 	for(auto e: sacola){
 		std::cout << e.quantidade << " de " << e.nome << std::endl;
 	}
+}
+
+void Cliente::registro(){
+	std::ofstream file; //arquivo 
+    std::string line; // linha a ser lida
+    file.open("cliente_" + std::to_string(clienteQuant - 1 )); // nome do arquivo aberto
+    
+    for(auto e: sacola){
+		file << e.quantidade << " de " << e.nome << std::endl;
+    }
+
+    file.close();
+
+
 }
